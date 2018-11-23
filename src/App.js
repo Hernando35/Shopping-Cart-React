@@ -23,6 +23,14 @@ class App extends Component {
     console.log("App - Mounted");
   }
 
+  handReduction = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
+
   incrementEvent = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -58,6 +66,7 @@ class App extends Component {
             counters={this.state.counters}
             onDelete={this.decrementEvent}
             onIncrement={this.incrementEvent}
+            onReduce={this.handReduction}
           />
         </main>
       </React.Fragment>
